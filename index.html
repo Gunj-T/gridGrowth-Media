@@ -1,76 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gridGrowth Media</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="./Gridgrowth (400 x 400 px)_20240721_120356_0000.jpg">
+    <meta name="description" content="GridGrowth Media - Professional Digital Growth Agency">
+    <meta name="keywords"
+        content="digital marketing, SEO, web design, business growth, gridGrowth Media , grid growth media">
+    <meta name="author" content="gridGrowth Media">
+    <meta name="robots" content="index, follow">
+    <title>gridGrowth Media | Digital Growth & Business Scaling</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./gridGrowth Final Logo (400 x 400 px).png">
+    <!-- Tailwind CSS (Local) -->
+    <link href="output.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Custom Styles -->
     <style>
-        .mobile-menu {
-            transition: max-height 0.3s ease-out;
-            overflow: hidden;
-            max-height: 0;
+        /* Smooth Scrolling Behavior */
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        .mobile-menu.open {
-            max-height: 200px;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .hover-custom {
+
+        body {
+            overflow-x: hidden;
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+        }
+
+
+        /* Hero Section Background Gradient */
+        .bg-gradient-hero {
+            background: linear-gradient(to bottom, rgba(22, 27, 46, 0.8), rgba(22, 27, 46, 0.2));
+            /* animation: gradientFade 10s infinite alternate; */
+        }
+
+
+        @keyframes gradientFade {
+            0% {
+                opacity: 0.8;
+            }
+
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        /* Service Card Styles */
+        .service-card {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            will-change: transform, border-color;
+        }
+
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #6366f1;
+        }
+
+
+        /* Process Step Styles */
+        .process-step {
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+
+
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+        }
+
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .modal-content iframe {
+            width: 100%;
+            height: 80vh;
+        }
+
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+            }
+
+
+            .modal-content iframe {
+                height: 60vh;
+            }
+        }
+
+
+        /* General Link Styles */
+        a {
+            color: inherit;
             transition: color 0.3s ease;
         }
 
-        .hover-custom:hover {
-            color: #2629b7;
+
+        /* Announcement Bar */
+        /* .announcement-bar {
+            position: relative;
+            background-color: #1e40af;
+            color: white;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.875rem;
         }
 
-        .footer-link {
-            transition: color 0.3s ease;
+
+        .announcement-bar .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        } */
+
+
+        /* Link Hover Effect */
+        a:hover {
+            color: #6366f1;
+
         }
 
-        .footer-link:hover {
-            color: #2629b7;
+
+        /* Specific Navigation Link Styles */
+        nav {
+            transition: all 0.3s ease-in-out;
+            will-change: background-color, padding;
         }
 
-        .fade-in {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+
+        nav.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px 0;
         }
 
-        .fade-in.visible {
-            opacity: 1;
+
+        nav a {
+            position: relative;
+            transition: color 0.3s ease-in-out;
         }
 
-        .text-custom-blue {
-            color: #2629b7;
+
+        nav a:not(.logo)::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #6366f1;
+            left: 0;
+            bottom: -4px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-in-out;
+            will-change: transform;
         }
 
-        .btn-custom-blue {
-            background-color: #2629b7;
+
+        nav a:not(.logo):hover {
+            color: #ffffff;
         }
 
-        .btn-custom-blue:hover {
-            background-color: #1f219e;
+
+        nav a:not(.logo):hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
-        .footer-line {
-            border-top: 2px solid #2629b7;
+
+
+
+        /* Button Styles - No Shadows, More Rounded */
+        button {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 1.5rem;
+            /* Increased roundness */
+            padding: 0.75rem 1.5rem;
+            /* Adjusted padding for balance */
+            will-change: background-color, transform;
         }
 
-        .compact-width {
-            max-width: 90%;
-            margin: 0 auto;
+
+
+
+        /* Responsive Button Styling */
+        .responsive-button {
+            /* Using Tailwind's responsive prefixes */
+            @apply w-full md:w-auto;
+            /* Full width on small screens, auto on larger */
         }
+
+
+        /* Sections except Hero section*/
+        section:not(#hero) {
+            background-color: black;
+        }
+
 
         .scroll-top-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #2629b7;
-            width: 40px;
-            height: 40px;
+            background-color: #2563EB;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: none;
             align-items: center;
@@ -78,191 +273,486 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Hover Effect */
         .scroll-top-btn:hover {
-            background-color: #1f219e;
+            background-color: #1D4ED8;
             transform: translateY(-2px);
         }
 
+        /* Show Button */
         .scroll-top-btn.visible {
             display: flex;
+        }
+
+        /* Arrow Icon */
+        .scroll-top-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+
+
+
+
+        /* Footer Enhancements */
+
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            will-change: transform;
+        }
+
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
-<body class="bg-black text-white">
-    <!-- Navbar -->
-    <nav id="navbar" class="bg-black shadow-md">
-        <div class="compact-width px-4 sm:px-6 lg:px-8">
+
+<body class="bg-black text-white tracking-wide">
+
+
+
+
+
+    <!-- Announcement Bar -->
+    <!-- <div class="announcement-bar">
+        <p>🚀 Transform your business with our new AI-powered marketing solutions</p>
+        <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+    </div> -->
+
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-lg transition-all duration-300 border border-gray-800">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="./Gridgrowth (400 x 400 px)_20240721_120356_0000.jpg" alt="Logo" class="h-24 w-auto mr-2">
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button id="menu-toggle"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
+                <!-- Logo -->
+                <a href="#" class="logo flex items-center space-x-2">
+                    <img src="./gridGrowth Final Logo (400 x 400 px).png" alt="GridGrowth Media Logo"
+                        class="h-auto w-16">
+                </a>
+
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
+                    <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
+                    <a href="#footer" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                    <button onclick="openForm()"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-all transform hover:scale-105">
+                        Get Started
                     </button>
                 </div>
-                <div class="hidden md:flex md:space-x-8">
-                    <a href="#" class="hover-custom">Home</a>
-                    <a href="#about-us" class="hover-custom">About Us</a>
-                    <a href="#services" class="hover-custom">Services</a>
-                    <a href="#why-choose-us" class="hover-custom">Why Choose Us</a>
-                    <a href="#footer" class="hover-custom">Contact</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black">
-                <a href="#" class="block hover-custom">Home</a>
-                <a href="#about-us" class="block hover-custom">About Us</a>
-                <a href="#services" class="block hover-custom">Services</a>
-                <a href="#why-choose-us" class="block hover-custom">Why Choose Us</a>
-                <a href="#footer" class="block hover-custom">Contact</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden ">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-black ">
+
+                    <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-white">About</a>
+                    <a href="#services" class="block px-3 py-2 text-gray-300 hover:text-white ">Services</a>
+                    <a href="#process" class="block px-3 py-2 text-gray-300 hover:text-white">Process</a>
+                    <a href="#footer" class="block px-3 py-2 text-gray-300 hover:text-white">Contact</a>
+                    <button onclick="openForm()"
+                        class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors">
+                        Get Started
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
+
     <!-- Hero Section -->
-    <section class="h-screen flex flex-col justify-center items-center text-center bg-black px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">At <span class="text-custom-blue">gridGrowth
-                Media</span>,</h1>
-        <p class="text-lg sm:text-xl md:text-2xl mb-8">we simply scale your business.</p>
-        <a href="#"
-            class="btn-custom-blue hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-300">Get
-            the App</a>
-        <div class="mt-16 animate-bounce">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-            </svg>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero" id="hero">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                    Transform Your Digital <br />
+                    <span class="text-blue-500">Presence & Growth</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+                    Combining the power of analytics and creativity.
+
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="openForm()"
+                        class="responsive-button bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all transform hover:scale-105">
+                        Schedule a Strategy Call
+                    </button>
+
+
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- About Us Section -->
-    <section id="about-us"
-        class="h-screen flex flex-col md:flex-row justify-center items-center px-6 sm:px-8 lg:px-10 fade-in">
-        <div class="md:w-1/2 flex justify-center items-center mb-6 md:mb-0">
-            <img src="https://via.placeholder.com/500x500.png?text=Our+Agency" alt="About Us Image"
-                class="rounded-lg shadow-lg w-full h-auto max-w-sm md:max-w-md">
-        </div>
-        <div class="md:w-1/2 text-center md:text-left px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-custom-blue">About Us</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">
-                Welcome to <span class="text-custom-blue">gridGrowth Media</span>, where innovation meets results. We
-                are a creative agency dedicated to helping businesses scale with cutting-edge solutions. Our passion
-                drives success.
-            </p>
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl md:text-4xl font-bold">About Us</h2>
+                    <p class="text-gray-400 text-lg">
+                        At GridGrowth Media, we're more than just a marketing agency – we're your partners in digital
+                        growth. We blend creativity with data to craft strategies that help you stand out.
+                    </p>
+                    <p class="text-gray-400 text-lg">
+                        Our team specializes in social media, web design, and innovative campaigns, all designed to
+                        convert potential customers into loyal fans. We believe in measurable results and are
+                        dedicated to seeing your brand thrive.
+                    </p>
+                    <button onclick="openForm()"
+                        class="responsive-button bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all transform hover:scale-105">
+                        Let's Grow Together
+                    </button>
+                </div>
+
+
+                <!-- Graphic Element -->
+                <div class="hidden md:flex justify-center">
+                    <img src="./5204985.jpg" alt="Team Collaboration" class="rounded-lg shadow-lg w-80">
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- Services Section -->
-    <section id="services" class="h-screen py-20 bg-black text-center fade-in px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-10">Our Services</h2>
-        <div class="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-10">
-            <div class="bg-gray-800 p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-                <h3 class="text-xl font-semibold mb-4">Service One</h3>
-                <p>Short description of service one.</p>
+    <section id="services" class="py-24 mt-10 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Comprehensive digital solutions tailored to drive your business growth
+                </p>
             </div>
-            <div class="bg-gray-800 p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-                <h3 class="text-xl font-semibold mb-4">Service Two</h3>
-                <p>Short description of service two.</p>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Digital Strategy Card -->
+                <div
+                    class="service-card p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="mb-6">
+                        <i class="fas fa-rocket fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Digital Strategy</h3>
+                    <p class="text-gray-400 mb-6">Data-driven digital strategies that align with your
+                        business goals
+                        and target audience.</p>
+
+                </div>
+
+
+                <!-- Social Media Marketing Card -->
+                <div
+                    class="service-card p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="mb-6">
+                        <i class="fas fa-share-alt fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Social Media Marketing</h3>
+                    <p class="text-gray-400 mb-6">Engage your audience and build your brand with strategic
+                        social
+                        media campaigns.</p>
+
+                </div>
+
+
+                <!-- Web Design & Development Card -->
+                <div
+                    class="service-card p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="mb-6">
+                        <i class="fas fa-code fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Web Design & Development</h3>
+                    <p class="text-gray-400 mb-6">Create a stunning and functional website that drives
+                        conversions and
+                        represents your brand.</p>
+
+                </div>
+
+
+                <!-- SEO & Content Marketing Card -->
+                <div
+                    class="service-card p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="mb-6">
+                        <i class="fas fa-search fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">SEO & Content Marketing</h3>
+                    <p class="text-gray-400 mb-6">Improve your search engine rankings and engage your
+                        audience with
+                        valuable content.</p>
+
+                </div>
+
+
+                <!-- PPC Advertising Card -->
+                <div
+                    class="service-card p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="mb-6">
+                        <i class="fas fa-dollar-sign fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">PPC Advertising</h3>
+                    <p class="text-gray-400 mb-6">Drive targeted traffic to your website with effective
+                        pay-per-click
+                        advertising campaigns.</p>
+
+                </div>
+
+
+                <!-- Email Marketing Card -->
+                <div
+                    class="service-card p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="mb-6">
+                        <i class="fas fa-video fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Video Production and Marketing
+
+                    </h3>
+                    <p class="text-gray-400 mb-6">Create compelling animated video content for social media, YouTube,
+                        websites, and ads.</p>
+
+                </div>
             </div>
-            <div class="bg-gray-800 p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-                <h3 class="text-xl font-semibold mb-4">Service Three</h3>
-                <p>Short description of service three.</p>
+    </section>
+
+
+    <!-- Process Section -->
+    <section id="process" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our Process</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    A systematic approach to delivering exceptional results
+                </p>
+            </div>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Discovery Step -->
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="process-step text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Discovery</h3>
+                    <p class="text-gray-400">Understanding your business, goals, and target audience</p>
+                </div>
+
+
+                <!-- Strategy Step -->
+                <div data-aos="fade-up" data-aos-delay="200"
+                    class="process-step text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Strategy</h3>
+                    <p class="text-gray-400">Developing a tailored strategy to achieve your specific objectives</p>
+                </div>
+
+
+                <!-- Implementation Step -->
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="process-step text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Implementation</h3>
+                    <p class="text-gray-400">Executing the strategy with precision and attention to detail</p>
+                </div>
+
+
+                <!-- Optimization Step -->
+                <div data-aos="fade-up" data-aos-delay="400"
+                    class="process-step text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Optimization</h3>
+                    <p class="text-gray-400">Continuously optimizing and refining the strategy based on data and
+                        insights</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section id="why-choose-us" class="h-screen py-20 bg-black text-center fade-in px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-10">What Our Clients Say</h2>
-        <blockquote class="max-w-xl mx-auto italic text-gray-300 mb-8">
-            "This service has transformed my business! Highly recommend."
-        </blockquote>
-        <p>- Satisfied Client</p>
+
+    <!-- CTA Section -->
+    <section class="py-24 ">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">Ready to Scale Your Business?
+            </h2>
+            <p class="text-gray-400 text-xl mb-8">
+                Let's discuss your goals and create a custom strategy to achieve them.
+            </p>
+            <button onclick="openForm()"
+                class="responsive-button bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all transform hover:scale-105">
+                Schedule a Strategy Call
+            </button>
+        </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="footer" class="bg-black py-10 mt-10 fade-in px-4 sm:px-6 lg:px-8">
-        <div class="footer-line mb-8"></div>
-        <div class="max-w-md mx-auto text-center">
-            <h3 class="text-lg font-bold mb-4">Connect With Us</h3>
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                    class="footer-link">Instagram</a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                    class="footer-link">Facebook</a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                    class="footer-link">Twitter</a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Email" class="footer-link">Email</a>
+
+
+    <!-- Footer Section -->
+    <footer id="footer" class="border-t border-gray-700 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-8 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+
+                <!-- Logo and Description -->
+                <div>
+                    <img src="./gridGrowth Final Logo (400 x 400 px).png" alt="GridGrowth Media Logo"
+                        class="h-20 mx-auto md:mx-0 mb-6">
+                    <p class="text-base leading-relaxed">
+                        Transforming businesses through <br> innovative digital solutions.
+                    </p>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-4">📩 Contact</h4>
+                    <ul class="space-y-3 text-lg">
+                        <li>gridgrowthmedia@gmail.com</li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="text-center md:text-right">
+                    <h4 class="text-xl font-semibold text-white mb-4">🌍 Stay Connected</h4>
+                    <div class="flex justify-center md:justify-end space-x-5 text-2xl">
+                        <a href="https://x.com/gridGrowthMedia" class="social-icon twitter"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/gridgrowthmedia/?next=%2F" class="social-icon instagram"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
-            <p class="text-gray-500">&copy; 2024 MyWebsite. All rights reserved.</p>
+
+            <!-- Copyright Section -->
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-lg">
+                <p>Made with ❤️ by <span class="text-white font-semibold">GridGrowth Media</span></p>
+            </div>
         </div>
     </footer>
 
-    <!-- Scroll to top button -->
+
+
+    <!-- Modal Form (Google Form - Embedded Correctly) -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeForm()">&times;</span>
+            <iframe src="https://forms.gle/GfTAUH4h5Lt5XnND8" width="640" height="1088" frameborder="0" marginheight="0"
+                marginwidth="0">Loading…</iframe>
+        </div>
+    </div>
+
+
+    <!-- Scroll to Top Button -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-        </svg>
+        <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- JavaScript -->
+
     <script>
-        // Mobile menu toggle
-        const btn = document.getElementById("menu-toggle");
-        const mobileMenu = document.getElementById("mobile-menu");
+        // Function to open the form modal
+        function openForm() {
+            document.getElementById("formModal").style.display = "block";
+        }
 
-        btn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("open");
+
+        // Function to close the form modal
+        function closeForm() {
+            document.getElementById("formModal").style.display = "none";
+        }
+
+
+        // Navigation bar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
 
-        // Smooth scrolling for navbar links
-        const navbarLinks = document.querySelectorAll('nav a[href^="#"]');
 
-        navbarLinks.forEach(link => {
-            link.addEventListener("click", (event) => {
-                event.preventDefault();
-                const targetId = link.getAttribute("href");
-                const targetElement = document.querySelector(targetId);
+        // Fade-in elements on scroll
+        const fadeInElements = document.querySelectorAll('.fade-in');
 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: "smooth",
-                    });
-                }
-            });
-        });
-
-        // Fade in effect on scroll
-        const sections = document.querySelectorAll('.fade-in');
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    observer.unobserve(entry.target); // Stop observing after revealing
                 }
+            });
+        }, {
+            threshold: 0.15, // Adjust threshold as needed
+        });
+
+
+        fadeInElements.forEach((element) => {
+            observer.observe(element);
+        });
+
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        const menuLinks = document.querySelectorAll('#mobile-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
 
         // Scroll to top functionality
         const scrollTopBtn = document.getElementById('scrollTopBtn');
 
+        // Show/hide button on scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 scrollTopBtn.classList.add('visible');
@@ -271,13 +761,37 @@
             }
         });
 
+        // Scroll to top when button is clicked
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
+
+        window.addEventListener('scroll', function () {
+            var navbar = document.getElementById("navbar");
+            var heroSection = document.getElementById("hero");
+            var heroHeight = heroSection.offsetHeight;
+            var scrollThreshold = heroHeight - 50;
+
+            if (window.scrollY > scrollThreshold) {
+                navbar.classList.add("scrolled"); // Add 'scrolled' class
+                navbar.classList.remove("bg-black/90", "backdrop-blur-lg"); // Remove initial classes
+            } else {
+                navbar.classList.remove("scrolled"); // Remove 'scrolled' class
+                navbar.classList.add("bg-black/90", "backdrop-blur-lg"); // Re-add initial classes
+            }
+        });
+
+
+
+
+
     </script>
+
+
 </body>
+
 
 </html>
